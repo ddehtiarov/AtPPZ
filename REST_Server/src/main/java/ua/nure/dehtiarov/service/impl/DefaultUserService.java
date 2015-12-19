@@ -48,6 +48,6 @@ public class DefaultUserService implements UserService {
 
     @Override
     public Boolean authenticate(String email, String password) {
-        return userDao.authenticate(email,password);
+        return userDao.authenticate(email, password);
     }
 }

@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import static org.hibernate.criterion.Restrictions.eq;
 
-
 @Repository
 @Transactional
 public class DefaultUserDao extends GenericDAOImpl<User, Long> implements UserDAO {
@@ -38,8 +37,4 @@ public class DefaultUserDao extends GenericDAOImpl<User, Long> implements UserDA
         return (User) criteria.uniqueResult();
     }
 
-    @Override
-    public boolean addUser(User user) {
-        return false;
-    }
 }

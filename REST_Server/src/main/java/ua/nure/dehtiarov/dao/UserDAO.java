@@ -9,5 +9,4 @@ public interface UserDAO extends GenericDAO<User, Long> {
 
     User findByEmail(String email);
 
-    boolean addUser(User user);
 }
