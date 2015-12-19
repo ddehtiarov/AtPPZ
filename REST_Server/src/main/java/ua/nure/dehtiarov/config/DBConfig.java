@@ -73,6 +73,8 @@ public class DBConfig {
         return new DefaultUserDao();
     }
 
+    //todo: Add all dao here to config!
+
     @Bean(name = "userService")
     public UserService getUserService() {
         return new DefaultUserService();

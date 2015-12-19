@@ -1,7 +1,7 @@
 package ua.nure.dehtiarov.dao;
 
-import ua.nure.dehtiarov.entity.User;
 import com.googlecode.genericdao.dao.hibernate.GenericDAO;
+import ua.nure.dehtiarov.entity.User;
 
 public interface UserDAO extends GenericDAO<User, Long> {
 
