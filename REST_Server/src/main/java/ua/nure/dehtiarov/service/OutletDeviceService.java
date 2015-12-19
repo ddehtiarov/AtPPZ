@@ -18,6 +18,6 @@ public interface OutletDeviceService {
 
     OutletDevice findOutletDeviceById(Long id);
 
-    List<OutletDevice> getAllOtletssByOutletId();
+    List<OutletDevice> getAllOutletsByOutletId(Long id);
 
 }

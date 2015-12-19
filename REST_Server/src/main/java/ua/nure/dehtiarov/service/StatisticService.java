@@ -16,10 +16,10 @@ public interface StatisticService {
 
     void delete(Statistic statistic);
 
-    Outlet findStatisticById(Long id);
+    Statistic findStatisticById(Long id);
 
-    List<Statistic> getAllStatisticsByUserId();
+    List<Statistic> getAllStatisticsByUserId(Long id);
 
-    List<Statistic> getAllStatisticsByOutletDeviceId();
+    List<Statistic> getAllStatisticsByOutletDeviceId(Long id);
 
 }

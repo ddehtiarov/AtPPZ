@@ -34,6 +34,7 @@ public class DefaultUserDao extends GenericDAOImpl<User, Long> implements UserDA
     public User findByEmail(String email) {
         Criteria criteria = getSession().createCriteria(User.class);
         criteria.add(eq("email", email));
+
         return (User) criteria.uniqueResult();
     }
 

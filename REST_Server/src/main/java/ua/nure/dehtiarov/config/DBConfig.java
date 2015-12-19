@@ -12,11 +12,11 @@ import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.context.WebApplicationContext;
-import ua.nure.dehtiarov.dao.UserDAO;
-import ua.nure.dehtiarov.dao.impl.DefaultUserDao;
+import ua.nure.dehtiarov.dao.*;
+import ua.nure.dehtiarov.dao.impl.*;
 import ua.nure.dehtiarov.entity.*;
-import ua.nure.dehtiarov.service.UserService;
-import ua.nure.dehtiarov.service.impl.DefaultUserService;
+import ua.nure.dehtiarov.service.*;
+import ua.nure.dehtiarov.service.impl.*;
 
 import javax.inject.Inject;
 import javax.sql.DataSource;
@@ -73,11 +73,54 @@ public class DBConfig {
         return new DefaultUserDao();
     }
 
-    //todo: Add all dao here to config!
+    @Bean(name = "statisticDAO")
+    public StatisticDAO getStatisticDao() {
+        return new DefaultStatisticDao();
+    }
+
+    @Bean(name = "deviceDAO")
+    public DeviceDAO getDeviceDAO() {
+        return new DefaultDeviceDao();
+    }
+
+    @Bean(name = "outletDAO")
+    public OutletDAO getOutletDAO() {
+        return new DefaultOutletDao();
+    }
+
+    @Bean(name = "outletDeviceDAO")
+    public OutletDeviceDAO getOutletDeviceDAO() {
+        return new DefaultOutletDeviceDao();
+    }
+
+    @Bean(name = "statusDAO")
+    public StatusDAO getStatusDAO() {
+        return new DefaultStatusDao();
+    }
 
     @Bean(name = "userService")
     public UserService getUserService() {
         return new DefaultUserService();
+    }
+
+    @Bean(name = "outletService")
+    public OutletService getOutletService() {
+        return new DefaultOutletService();
+    }
+
+    @Bean(name = "deviceService")
+    public DeviceService getDeviceService() {
+        return new DefaultDeviceService();
+    }
+
+    @Bean(name = "statisticService")
+    public StatisticService getStatisticService() {
+        return new DefaultStatisticService();
+    }
+
+    @Bean(name = "outletDeviceService")
+    public OutletDeviceService getOutletDeviceService() {
+        return new DefaultOutletDeviceService();
     }
 
 }
