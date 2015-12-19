@@ -25,9 +25,6 @@ public class User implements Serializable {
 
     private String password;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-    private Set<Outlet> usersOutlets = new HashSet<>(0);
-
     public User() {
     }
 
@@ -72,13 +69,5 @@ public class User implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public Set<Outlet> getUsersOutlets() {
-        return usersOutlets;
-    }
-
-    public void setUsersOutlets(Set<Outlet> usersOutlets) {
-        this.usersOutlets = usersOutlets;
     }
 }

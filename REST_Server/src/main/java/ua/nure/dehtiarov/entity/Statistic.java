@@ -1,6 +1,7 @@
 package ua.nure.dehtiarov.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -13,7 +14,7 @@ import static javax.persistence.GenerationType.IDENTITY;
  */
 @Entity
 @Table(name = "statistic")
-public class Statistic {
+public class Statistic implements Serializable {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)

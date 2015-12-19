@@ -1,6 +1,7 @@
 package ua.nure.dehtiarov.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -11,8 +12,8 @@ import static javax.persistence.GenerationType.IDENTITY;
  * Created by dehtiarov on 12/12/2015.
  */
 @Entity
-@Table(name = "outlet")
-public class Outlet {
+@Table(name = "outlet", uniqueConstraints = @UniqueConstraint(columnNames = "serialCode"))
+public class Outlet implements Serializable {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -27,13 +28,16 @@ public class Outlet {
 
     private String name;
 
+    private String serialCode;
+
     public Outlet() {
     }
 
-    public Outlet(User user, String location, String name) {
+    public Outlet(User user, String location, String name, String serialCode) {
         this.user = user;
         this.location = location;
         this.name = name;
+        this.serialCode = serialCode;
 
         ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
         executorService.schedule(() -> {
@@ -71,5 +75,13 @@ public class Outlet {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getSerialCode() {
+        return serialCode;
+    }
+
+    public void setSerialCode(String serialCode) {
+        this.serialCode = serialCode;
     }
 }

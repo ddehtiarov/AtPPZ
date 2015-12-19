@@ -1,6 +1,7 @@
 package ua.nure.dehtiarov.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -12,7 +13,7 @@ import static javax.persistence.GenerationType.IDENTITY;
  */
 @Entity
 @Table(name = "device")
-public class Device {
+public class Device implements Serializable {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
