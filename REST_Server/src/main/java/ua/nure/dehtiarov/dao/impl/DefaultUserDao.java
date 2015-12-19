@@ -16,7 +16,6 @@ import static org.hibernate.criterion.Restrictions.eq;
 @Transactional
 public class DefaultUserDao extends GenericDAOImpl<User, Long> implements UserDAO {
 
-
     @Autowired
     @Override
     public void setSessionFactory(SessionFactory sessionFactory) {

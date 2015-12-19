@@ -15,7 +15,6 @@ public class UserController {
     @Autowired
     UserService userService;
 
-
     @RequestMapping("/get")
     public User get(@RequestParam(value = "email") String name) {
         System.out.println("name -> " + name);
@@ -33,8 +32,6 @@ public class UserController {
     public User addUser(@RequestParam(value = "name") String name,
                         @RequestParam(value = "email") String email,
                         @RequestParam(value = "password") String password) {
-
-        //1L -> UserRole.User
 
         User user = new User(name, email, password);
 

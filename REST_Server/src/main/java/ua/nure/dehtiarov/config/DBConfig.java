@@ -27,12 +27,8 @@ import java.util.Properties;
 @PropertySource("classpath:application.properties")
 public class DBConfig {
 
-
     @Inject
     private Environment environment;
-
-//    @Value("classpath:schema-userrole.sql")
-//    private Resource schemaScript;
 
     private Properties getHibernateProperties() {
         Properties properties = new Properties();
@@ -43,27 +39,12 @@ public class DBConfig {
         return properties;
     }
 
-//    @Bean
-//    public DataSourceInitializer dataSourceInitializer(final DataSource dataSource) {
-//        final DataSourceInitializer initializer = new DataSourceInitializer();
-//        initializer.setDataSource(dataSource);
-//        initializer.setDatabasePopulator(databasePopulator());
-//        return initializer;
-//    }
-
-//    private DatabasePopulator databasePopulator() {
-//        final ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
-//        populator.addScript(schemaScript);
-//        return populator;
-//    }
-
     @Autowired
     @Bean(name = "hibernateTemplate")
     @Scope(WebApplicationContext.SCOPE_REQUEST)
     public HibernateTemplate getHibernateTemplate(SessionFactory sessionFactory) {
         return new HibernateTemplate(sessionFactory);
     }
-
 
     @Autowired
     @Bean(name = "sessionFactory")
@@ -85,16 +66,6 @@ public class DBConfig {
         dataSource.setPassword(environment.getProperty("password1"));
         return dataSource;
     }
-
-//    @Autowired
-//    @Bean(name = "transactionManager")
-////    @Scope(WebApplicationContext.SCOPE_REQUEST)
-//    public HibernateTransactionManager getTransactionManager(SessionFactory sessionFactory) {
-//        HibernateTransactionManager hibernateTransactionManager = new HibernateTransactionManager();
-//        hibernateTransactionManager.setSessionFactory(sessionFactory);
-//        return hibernateTransactionManager;
-//    }
-
 
     @Bean(name = "userDao")
     public UserDAO getUserDao() {
