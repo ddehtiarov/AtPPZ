@@ -37,4 +37,9 @@ public class DefaultUserDao extends GenericDAOImpl<User, Long> implements UserDA
         criteria.add(eq("email", email));
         return (User) criteria.uniqueResult();
     }
+
+    @Override
+    public boolean addUser(User user) {
+        return false;
+    }
 }

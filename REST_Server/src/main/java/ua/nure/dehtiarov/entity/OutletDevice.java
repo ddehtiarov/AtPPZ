@@ -19,20 +19,26 @@ public class OutletDevice {
     @Column(name = "id", unique = true, nullable = false)
     private Long id;
 
-    private Long outletid;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "outlet_id", nullable = false)
+    private Outlet outlet;
 
-    private Long statusid;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "status_id", nullable = false)
+    private Status status;
 
-    private String devicemacaddress;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "device_macaddress", nullable = false)
+    private Device device;
 
     public OutletDevice() {
 
     }
 
-    public OutletDevice(Long outletid, Long statusid, String devicemacaddress) {
-        this.outletid = outletid;
-        this.statusid = statusid;
-        this.devicemacaddress = devicemacaddress;
+    public OutletDevice(Outlet outlet, Status status, Device device) {
+        this.outlet = outlet;
+        this.status = status;
+        this.device = device;
 
         ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
         executorService.schedule(() -> {
@@ -47,27 +53,27 @@ public class OutletDevice {
         this.id = id;
     }
 
-    public Long getOutletid() {
-        return outletid;
+    public Outlet getOutletid() {
+        return outlet;
     }
 
-    public void setOutletid(Long outletid) {
-        this.outletid = outletid;
+    public void setOutletid(Outlet outlet) {
+        this.outlet = outlet;
     }
 
-    public Long getStatusid() {
-        return statusid;
+    public Status getStatus() {
+        return status;
     }
 
-    public void setStatusid(Long statusid) {
-        this.statusid = statusid;
+    public void setStatusid(Status status) {
+        this.status = status;
     }
 
-    public String getDevicemacaddress() {
-        return devicemacaddress;
+    public Device getDevice() {
+        return device;
     }
 
-    public void setDevicemacaddress(String devicemacaddress) {
-        this.devicemacaddress = devicemacaddress;
+    public void setDevice(Device device) {
+        this.device = device;
     }
 }

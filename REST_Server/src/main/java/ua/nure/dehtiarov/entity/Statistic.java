@@ -20,9 +20,13 @@ public class Statistic {
     @Column(name = "id", unique = true, nullable = false)
     private Long id;
 
-    private Long userid;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
-    private Long outletdeviceid;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "outletDevice_id", nullable = false)
+    private OutletDevice outletDevice;
 
     private Timestamp begintime;
 
@@ -31,11 +35,11 @@ public class Statistic {
     public Statistic() {
     }
 
-    public Statistic(Timestamp endtime, Timestamp begintime, Long outletdeviceid, Long userid) {
+    public Statistic(Timestamp endtime, Timestamp begintime, OutletDevice outletdevice, User user) {
         this.endtime = endtime;
         this.begintime = begintime;
-        this.outletdeviceid = outletdeviceid;
-        this.userid = userid;
+        this.outletDevice = outletdevice;
+        this.user = user;
 
         ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
         executorService.schedule(() -> {
@@ -50,20 +54,20 @@ public class Statistic {
         this.endtime = endtime;
     }
 
-    public Long getUserid() {
-        return userid;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserid(Long userid) {
-        this.userid = userid;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public Long getOutletdeviceid() {
-        return outletdeviceid;
+    public OutletDevice getOutletDevice() {
+        return outletDevice;
     }
 
-    public void setOutletdeviceid(Long outletdeviceid) {
-        this.outletdeviceid = outletdeviceid;
+    public void setOutletDevice(OutletDevice outletDevice) {
+        this.outletDevice = outletDevice;
     }
 
     public Timestamp getBegintime() {

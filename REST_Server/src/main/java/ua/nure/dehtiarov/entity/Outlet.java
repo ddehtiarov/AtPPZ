@@ -19,7 +19,9 @@ public class Outlet {
     @Column(name = "id", unique = true, nullable = false)
     private Long id;
 
-    private Long userid;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     private String location;
 
@@ -28,8 +30,8 @@ public class Outlet {
     public Outlet() {
     }
 
-    public Outlet(Long userid, String location, String name) {
-        this.userid = userid;
+    public Outlet(User user, String location, String name) {
+        this.user = user;
         this.location = location;
         this.name = name;
 
@@ -47,12 +49,12 @@ public class Outlet {
         this.id = id;
     }
 
-    public Long getUserid() {
-        return userid;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserid(Long userid) {
-        this.userid = userid;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getLocation() {

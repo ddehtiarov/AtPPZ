@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.context.WebApplicationContext;
 import ua.nure.dehtiarov.dao.UserDAO;
 import ua.nure.dehtiarov.dao.impl.DefaultUserDao;
-import ua.nure.dehtiarov.entity.User;
+import ua.nure.dehtiarov.entity.*;
 import ua.nure.dehtiarov.service.UserService;
 import ua.nure.dehtiarov.service.impl.DefaultUserService;
 
@@ -51,7 +51,8 @@ public class DBConfig {
     public SessionFactory getSessionFactory(DataSource dataSource) {
         LocalSessionFactoryBuilder localSessionFactoryBuilder = new LocalSessionFactoryBuilder(
                 dataSource);
-        localSessionFactoryBuilder.addAnnotatedClasses(new Class[]{User.class});
+        localSessionFactoryBuilder.addAnnotatedClasses(new Class[]{Status.class, Device.class,
+                Outlet.class, User.class, OutletDevice.class, Statistic.class});
         localSessionFactoryBuilder.addProperties(getHibernateProperties());
         localSessionFactoryBuilder.scanPackages("ua.nure.dehtiarov.entity");
         return localSessionFactoryBuilder.buildSessionFactory();

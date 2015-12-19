@@ -2,6 +2,8 @@ package ua.nure.dehtiarov.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -22,6 +24,9 @@ public class User implements Serializable {
     private String name;
 
     private String password;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    private Set<Outlet> usersOutlets = new HashSet<>(0);
 
     public User() {
     }
@@ -45,7 +50,6 @@ public class User implements Serializable {
         this.id = id;
     }
 
-
     public String getName() {
         return name;
     }
@@ -62,7 +66,6 @@ public class User implements Serializable {
         this.password = password;
     }
 
-
     public String getEmail() {
         return email;
     }
@@ -71,4 +74,11 @@ public class User implements Serializable {
         this.email = email;
     }
 
+    public Set<Outlet> getUsersOutlets() {
+        return usersOutlets;
+    }
+
+    public void setUsersOutlets(Set<Outlet> usersOutlets) {
+        this.usersOutlets = usersOutlets;
+    }
 }
