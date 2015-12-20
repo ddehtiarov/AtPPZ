@@ -19,5 +19,4 @@ public class OutletController {
     @Autowired
     OutletService outletService;
 
-
 }
