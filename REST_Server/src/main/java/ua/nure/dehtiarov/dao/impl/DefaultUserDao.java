@@ -27,6 +27,8 @@ public class DefaultUserDao extends GenericDAOImpl<User, Long> implements UserDA
         criteria.add(eq("email", email));
         criteria.add(eq("password", password));
 
+        System.out.println(email + " " + password);
+
         return criteria.uniqueResult() != null;
     }
 

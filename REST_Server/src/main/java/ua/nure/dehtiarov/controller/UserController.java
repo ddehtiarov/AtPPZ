@@ -1,5 +1,6 @@
 package ua.nure.dehtiarov.controller;
 
+import org.apache.log4j.Logger;
 import ua.nure.dehtiarov.entity.Outlet;
 import ua.nure.dehtiarov.entity.OutletDevice;
 import ua.nure.dehtiarov.entity.User;
@@ -14,21 +15,23 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/user")
 public class UserController {
 
+    private static final Logger LOGGER = Logger.getLogger(UserController.class);
+
     @Autowired
     private UserService userService;
     @Autowired
     private OutletService outletService;
 
     @RequestMapping("/get")
-    public User get(@RequestParam(value = "email") String name) {
-        System.out.println("name -> " + name);
-        return userService.findByEmail(name);
+    public User get(@RequestParam(value = "email") String email) {
+        LOGGER.info("email -> " + email);
+        return userService.findByEmail(email);
     }
 
     @RequestMapping("/auth")
     public boolean authenticate(@RequestParam(value = "email") String email,
                                 @RequestParam(value = "password") String password) {
-
+        System.out.println("Tyring to login user with email: " + email);
         return userService.authenticate(email, password);
     }
 
@@ -36,9 +39,8 @@ public class UserController {
     public User addUser(@RequestParam(value = "name") String name,
                         @RequestParam(value = "email") String email,
                         @RequestParam(value = "password") String password) {
-
         User user = new User(name, email, password);
-
+        System.out.println("Tyring to add user with email: " + email + "name: " + name);
         userService.add(user);
 
         return user;

@@ -9,7 +9,7 @@ public class Application {
         SpringApplication.run(Application.class, args);
         System.out.println("Executor start");
 
-        Thread.currentThread().sleep(1000000);
+        Thread.currentThread().sleep(1000000000000L);
         System.out.println("Executor end");
     }
 }

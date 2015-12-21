@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 
@@ -7,6 +8,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Registration Form</title>
+
+
+    <link href="<c:url value="/resources/css/editbox.css"/>" rel="stylesheet">
 
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
     <link rel="stylesheet" href="/resources/assets/bootstrap/css/bootstrap.min.css">
@@ -52,25 +56,28 @@
                         </div>
                     </div>
                     <div class="form-bottom">
-                        <form role="form" action="" method="post" class="registration-form">
+                        <form role="form" action="/register" method="post" class="registration-form">
                             <div class="form-group">
                                 <label class="sr-only" for="form-first-name">Name</label>
-                                <input type="text" name="form-first-name" placeholder="First name..."
+                                <input type="text" name="name" value="${user.name}" placeholder="Name..."
                                        class="form-first-name form-control" id="form-first-name">
                             </div>
                             <div class="form-group">
                                 <label class="sr-only" for="form-last-name">Password</label>
-                                <input type="text" name="form-last-name" placeholder="Last name..."
+                                <input type="text" value="${user.email}" name="email" placeholder="Email..."
                                        class="form-last-name form-control" id="form-last-name">
                             </div>
                             <div class="form-group">
                                 <label class="sr-only" for="form-email">Email</label>
-                                <input type="text" name="form-email" placeholder="Email..."
+                                <input type="password" name="password" placeholder="Password..."
                                        class="form-email form-control" id="form-email">
                             </div>
                             <button type="submit" class="btn">Register</button>
-                            <button type="submit" class="btn">Login</button>
+                            <button type="button" onclick="window.location.href='/login/'" class="btn">Login</button>
                         </form>
+                        <c:if test="${not empty error}">
+                            <div class="msg">${error}</div>
+                        </c:if>
                     </div>
                 </div>
             </div>
@@ -79,11 +86,11 @@
 
 </div>
 
-<script src="${pageContext.request.contextPath}/assets/js/jquery-1.11.1.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/bootstrap/js/bootstrap.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/jquery.backstretch.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/retina-1.1.0.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/scripts.js"></script>
+<script src="/resources/assets/js/jquery-1.11.1.min.js"></script>
+<script src="/resources/assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="/resources/assets/js/jquery.backstretch.min.js"></script>
+<script src="/resources/assets/js/retina-1.1.0.min.js"></script>
+<script src="/resources/assets/js/scripts.js"></script>
 
 </body>
 

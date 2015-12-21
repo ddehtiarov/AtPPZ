@@ -28,7 +28,7 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="fa fa-comments fa-5x"></i>
+                                    <i class="fa fa-support fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div class="huge">26</div>
@@ -134,9 +134,9 @@
 
 </div>
 
-<script src="${pageContext.request.contextPath}/js/plugins/morris/raphael.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/plugins/morris/morris.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/plugins/morris/morris-data.js"></script>
+<script src="/resources/js/plugins/morris/raphael.min.js"></script>
+<script src="/resources/js/plugins/morris/morris.min.js"></script>
+<script src="/resources/js/plugins/morris/morris-data.js"></script>
 
 </body>
 

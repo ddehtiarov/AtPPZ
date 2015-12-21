@@ -14,14 +14,32 @@ public class NavigationController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String goAdmin(ModelMap model) {
-        model.addAttribute("message", "Hello world!");
         return "admin";
     }
 
     @RequestMapping("/status")
     public String goStatisticPage(ModelMap model) {
-        model.addAttribute("message", "Hello world!");
         return "status";
+    }
+
+    @RequestMapping("/charts")
+    public String goChartsPage(ModelMap model) {
+        return "charts";
+    }
+
+    @RequestMapping("/device")
+    public String goDevicePage(ModelMap model) {
+        return "devices";
+    }
+
+    @RequestMapping("/device/edit")
+    public String goEditDevicePage(ModelMap model) {
+        return "edit_device";
+    }
+
+    @RequestMapping("/outlet/add")
+    public String goAddOutletPage(ModelMap model) {
+        return "add_outlet";
     }
 
 }
