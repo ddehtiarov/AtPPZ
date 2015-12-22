@@ -15,8 +15,8 @@ public interface DeviceService {
 
     void delete(Device device);
 
-    Device findDeviceByMacAddress(String macaddress);
+    Device findDeviceById(Long id);
 
-    List<Device> getAllDevices();
+    List<Device> getAllDevicesByUser(Long id);
 
 }

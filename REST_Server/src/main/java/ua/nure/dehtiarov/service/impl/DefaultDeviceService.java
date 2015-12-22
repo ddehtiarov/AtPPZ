@@ -35,12 +35,12 @@ public class DefaultDeviceService implements DeviceService {
     }
 
     @Override
-    public Device findDeviceByMacAddress(String macaddress) {
-        return deviceDAO.find(macaddress);
+    public Device findDeviceById(Long id) {
+        return deviceDAO.find(id);
     }
 
     @Override
-    public List<Device> getAllDevices() {
+    public List<Device> getAllDevicesByUser(Long id) {
         return deviceDAO.findAll();
     }
 }

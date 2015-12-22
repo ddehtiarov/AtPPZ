@@ -2,6 +2,7 @@ package ua.nure.dehtiarov.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -25,20 +26,17 @@ public class OutletDevice implements Serializable {
     private Outlet outlet;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "status_id", nullable = false)
-    private Status status;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "device_macaddress", nullable = false)
+    @JoinColumn(name = "device_id", nullable = false)
     private Device device;
+
+    private Timestamp activeTime;
 
     public OutletDevice() {
 
     }
 
-    public OutletDevice(Outlet outlet, Status status, Device device) {
+    public OutletDevice(Outlet outlet, Device device) {
         this.outlet = outlet;
-        this.status = status;
         this.device = device;
 
         ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
@@ -54,27 +52,36 @@ public class OutletDevice implements Serializable {
         this.id = id;
     }
 
-    public Outlet getOutletid() {
-        return outlet;
-    }
-
-    public void setOutletid(Outlet outlet) {
-        this.outlet = outlet;
-    }
-
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatusid(Status status) {
-        this.status = status;
-    }
-
     public Device getDevice() {
         return device;
     }
 
     public void setDevice(Device device) {
         this.device = device;
+    }
+
+    public Timestamp getActiveTime() {
+        return activeTime;
+    }
+
+    public void setActiveTime(Timestamp activeTime) {
+        this.activeTime = activeTime;
+    }
+
+    public Outlet getOutlet() {
+        return outlet;
+    }
+
+    public void setOutlet(Outlet outlet) {
+        this.outlet = outlet;
+    }
+
+    @Override
+    public String toString() {
+        return "OutletDevice{" +
+                "id=" + id +
+                ", outlet=" + outlet +
+                ", device=" + device +
+                '}';
     }
 }

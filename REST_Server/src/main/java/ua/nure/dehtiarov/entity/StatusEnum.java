@@ -5,7 +5,22 @@ package ua.nure.dehtiarov.entity;
  */
 public enum StatusEnum {
 
-    PAUSE(1), ONLINE(2), OFFLINE(3);
+    PAUSE(1) {
+        @Override
+        public StatusEnum changeStatus() {
+            return OFFLINE;
+        }
+    }, ONLINE(2) {
+        @Override
+        public StatusEnum changeStatus() {
+            return OFFLINE;
+        }
+    }, OFFLINE(3) {
+        @Override
+        public StatusEnum changeStatus() {
+            return ONLINE;
+        }
+    };
 
     public int getStatusId() {
         return statusId;
@@ -16,5 +31,7 @@ public enum StatusEnum {
     StatusEnum(int i) {
         statusId = i;
     }
+
+    public abstract StatusEnum changeStatus();
 
 }

@@ -24,6 +24,10 @@ public class Outlet implements Serializable {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "status_id", nullable = false)
+    private Status status;
+
     private String location;
 
     private String name;
@@ -38,6 +42,7 @@ public class Outlet implements Serializable {
         this.location = location;
         this.name = name;
         this.serialCode = serialCode;
+        this.status = new Status(StatusEnum.OFFLINE.toString());
 
         ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
         executorService.schedule(() -> {
@@ -83,5 +88,24 @@ public class Outlet implements Serializable {
 
     public void setSerialCode(String serialCode) {
         this.serialCode = serialCode;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatusid(Status status) {
+        this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "Outlet{" +
+                "id=" + id +
+                ", user=" + user +
+                ", location='" + location + '\'' +
+                ", name='" + name + '\'' +
+                ", serialCode='" + serialCode + '\'' +
+                '}';
     }
 }

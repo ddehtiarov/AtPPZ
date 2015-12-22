@@ -86,4 +86,15 @@ public class Statistic implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "Statistic{" +
+                "id=" + id +
+                ", user=" + user +
+                ", outletDevice=" + outletDevice +
+                ", begintime=" + begintime +
+                ", endtime=" + endtime +
+                '}';
+    }
 }
