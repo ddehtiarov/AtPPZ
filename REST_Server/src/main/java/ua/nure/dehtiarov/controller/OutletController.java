@@ -31,8 +31,8 @@ public class OutletController {
 
     @RequestMapping("/add")
     public boolean addOutlet(@RequestParam(value = "name") String name,
-                           @RequestParam(value = "email") String location,
-                           @RequestParam(value = "password") String serialCode,
+                           @RequestParam(value = "location") String location,
+                           @RequestParam(value = "serialCode") String serialCode,
                            @RequestParam(value = "userId") Long userId) {
 
         User user = userService.findUserById(userId);

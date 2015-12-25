@@ -40,6 +40,11 @@ public class DefaultOutletService implements OutletService {
     }
 
     @Override
+    public Outlet findOutletByCode(String code) {
+        return outletDAO.findOutletByCode(code);
+    }
+
+    @Override
     public List<Outlet> getAllOutletsByUserId(Long id) {
         return outletDAO.getAllOutletsByUserId(id);
     }

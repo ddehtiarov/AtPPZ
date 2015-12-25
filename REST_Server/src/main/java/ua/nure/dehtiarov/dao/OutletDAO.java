@@ -12,4 +12,5 @@ public interface OutletDAO extends GenericDAO<Outlet, Long> {
 
     List<Outlet> getAllOutletsByUserId(Long id);
 
+    Outlet findOutletByCode(String code);
 }

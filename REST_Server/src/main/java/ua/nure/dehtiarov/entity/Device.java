@@ -46,6 +46,17 @@ public class Device implements Serializable {
 
     }
 
+    public Device(String name, String mac, User user) {
+        this.name = name;
+        this.macaddress = mac;
+        this.user = user;
+
+        ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
+        executorService.schedule(() -> {
+        }, 24, TimeUnit.HOURS);
+
+    }
+
     public long getId() {
         return id;
     }

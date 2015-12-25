@@ -10,6 +10,7 @@ import ua.nure.dehtiarov.dao.DeviceDAO;
 import ua.nure.dehtiarov.entity.Device;
 import ua.nure.dehtiarov.entity.Outlet;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.hibernate.criterion.Restrictions.eq;
@@ -29,10 +30,16 @@ public class DefaultDeviceDao extends GenericDAOImpl<Device, Long> implements De
 
     @Override
     public List<Device> getAllDevicesByUserId(Long id) {
-        Criteria criteria = getSession().createCriteria(Device.class);
-        criteria.add(eq("user_id", id));
+        List<Device> devices = findAll();
+        List<Device> deviceArrayList = new ArrayList<>();
 
-        return criteria.list();
+        for (Device outlet : devices) {
+            if (outlet.getUser().getId().equals(id)) {
+                deviceArrayList.add(outlet);
+            }
+        }
+
+        return deviceArrayList;
     }
 
 }

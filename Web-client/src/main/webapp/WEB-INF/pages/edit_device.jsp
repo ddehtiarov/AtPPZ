@@ -8,7 +8,6 @@
 </head>
 
 <body>
-
 <div id="wrapper">
 
     <%@ include file="fragment/menu.jspf" %>
@@ -58,11 +57,8 @@
                         <button type="submit" class="btn btn-default">Edit</button>
                         <br><br><br><br><br><br><br><br><br><br><br><br>
                     </form>
-
                 </div>
-
             </div>
-
         </div>
     </div>
 </div>

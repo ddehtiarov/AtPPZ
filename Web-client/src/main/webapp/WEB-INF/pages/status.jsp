@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 
@@ -38,56 +39,35 @@
                         <table class="table table-bordered table-hover table-striped">
                             <thead>
                             <tr>
-                                <th>Page</th>
-                                <th>Visits</th>
-                                <th>% New Visits</th>
-                                <th>Revenue</th>
+                                <th>Outlet name</th>
+                                <th>Outlet location</th>
+                                <th>STATUS</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr class="active">
-                                <td>/index.html</td>
-                                <td>1265</td>
-                                <td>32.3%</td>
-                                <td>$321.33</td>
-                            </tr>
-                            <tr class="success">
-                                <td>/about.html</td>
-                                <td>261</td>
-                                <td>33.3%</td>
-                                <td>$234.12</td>
-                            </tr>
+                            <c:forEach items="${outlets}" var="outlet">
+                            <c:if test="${outlet.status.value eq 'PAUSED'}">
                             <tr class="warning">
-                                <td>/sales.html</td>
-                                <td>665</td>
-                                <td>21.3%</td>
-                                <td>$16.34</td>
+                                <td>${outlet.name}</td>
+                                <td>${outlet.location}</td>
+                                <td>${outlet.status.value}</td>
                             </tr>
+                            </c:if>
+                            <c:if test="${outlet.status.value eq 'OFFLINE'}">
                             <tr class="danger">
-                                <td>/blog.html</td>
-                                <td>9516</td>
-                                <td>89.3%</td>
-                                <td>$1644.43</td>
+                                <td>${outlet.name}</td>
+                                <td>${outlet.location}</td>
+                                <td>${outlet.status.value}</td>
                             </tr>
-                            <tr>
-                                <td>/404.html</td>
-                                <td>23</td>
-                                <td>34.3%</td>
-                                <td>$23.52</td>
+                            </c:if>
+                            <c:if test="${outlet.status.value eq 'ONLINE'}">
+                            <tr class="success">
+                                <td>${outlet.name}</td>
+                                <td>${outlet.location}</td>
+                                <td>${outlet.status.value}</td>
                             </tr>
-                            <tr>
-                                <td>/services.html</td>
-                                <td>421</td>
-                                <td>60.3%</td>
-                                <td>$724.32</td>
-                            </tr>
-                            <tr>
-                                <td>/blog/post.html</td>
-                                <td>1233</td>
-                                <td>93.2%</td>
-                                <td>$126.34</td>
-                            </tr>
-                            </tbody>
+                            </c:if>
+                            </c:forEach>
                         </table>
                     </div>
                 </div>

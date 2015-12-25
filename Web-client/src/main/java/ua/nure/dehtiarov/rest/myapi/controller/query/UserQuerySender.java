@@ -34,26 +34,4 @@ public class UserQuerySender extends QuerySender {
         }
         return user;
     }
-
-    public Object executeAuthen(String... params) {
-        String result = "false";
-
-        try {
-            String url = params[0];
-
-            DefaultHttpClient httpClient = new DefaultHttpClient();
-            ResponseHandler<String> res = new BasicResponseHandler();
-
-            HttpGet get = new HttpGet(url);
-
-            String response = httpClient.execute(get, res);
-
-            result = response;
-
-        } catch (Throwable t) {
-            throwable = t;
-        }
-        System.out.println(result);
-        return result;
-    }
 }

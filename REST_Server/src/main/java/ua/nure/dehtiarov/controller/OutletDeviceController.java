@@ -4,17 +4,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import ua.nure.dehtiarov.entity.Device;
 import ua.nure.dehtiarov.entity.Outlet;
+import ua.nure.dehtiarov.entity.Status;
 import ua.nure.dehtiarov.entity.StatusEnum;
 import ua.nure.dehtiarov.service.DeviceService;
 import ua.nure.dehtiarov.service.OutletDeviceService;
 import ua.nure.dehtiarov.service.OutletService;
+import ua.nure.dehtiarov.service.impl.DefaultDeviceService;
 
 /**
  * Created by dehtiarov on 12/22/2015.
  */
 @RestController
-@RequestMapping("/otdevactivate")
+@RequestMapping("/outdevactivate")
 public class OutletDeviceController {
 
     @Autowired
@@ -35,19 +38,36 @@ public class OutletDeviceController {
      * Then change outlet status and add outletdevice to my db with current date
      * if this dev just starts working or just change outl status
      *
-     * @param outId
+     * @param outCode
      * @param macaddress !!!! or something else !! or
      *                   macadr and check if user has this dev
      */
-    @RequestMapping("/getAll")
-    public void activationOutletWorkingProcess(@RequestParam(value = "outId") Long outId,
+    @RequestMapping("/do")
+    public void activationOutletWorkingProcess(@RequestParam(value = "outCode") String outCode,
                                                @RequestParam(value = "macaddress") String macaddress) {
 
         //todo: HERE MUST BE all LOGIC!!!
         //may be should create status service for changing status of my outl
         //or find how i can solve this problem
-        Outlet outlet = outletService.findOutletById(outId);
-        StatusEnum statusEnum = StatusEnum.valueOf(outlet.getStatus().getValue().toUpperCase());
+        Outlet outlet = outletService.findOutletByCode(outCode);
+       // StatusEnum statusEnum = StatusEnum.valueOf(outlet.getStatus().getValue().toUpperCase());
+
+        System.out.println("HERE:" + outlet);
+        Status status = new Status();
+        if(outlet.getStatus().getId().equals(1l)){
+            status.setId(2L);
+            try{
+                DeviceService deviceService = new DefaultDeviceService();
+                deviceService.add(new Device("name", macaddress, outlet.getUser()));
+                System.out.println("HERE:" + macaddress);
+            }catch (Exception e){
+
+               }
+        }else{
+            status.setId(1L);
+        }
+        outlet.setStatus(status);
+        outletService.update(outlet);
 
     }
 

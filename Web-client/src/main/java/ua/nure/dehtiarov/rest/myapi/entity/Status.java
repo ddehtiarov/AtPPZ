@@ -1,5 +1,8 @@
 package ua.nure.dehtiarov.rest.myapi.entity;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.Serializable;
 
 /**
@@ -16,6 +19,15 @@ public class Status implements Serializable {
 
     public Status(String value) {
         this.value = value;
+    }
+
+    public Status(JSONObject jsonObject) {
+        try {
+            this.value = jsonObject.get("value").toString();
+            this.id = Long.valueOf(jsonObject.get("id").toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     public Long getId() {

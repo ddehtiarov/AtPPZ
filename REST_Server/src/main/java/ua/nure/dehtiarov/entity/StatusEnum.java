@@ -5,7 +5,7 @@ package ua.nure.dehtiarov.entity;
  */
 public enum StatusEnum {
 
-    PAUSE(1) {
+    PAUSE(3) {
         @Override
         public StatusEnum changeStatus() {
             return OFFLINE;
@@ -15,7 +15,7 @@ public enum StatusEnum {
         public StatusEnum changeStatus() {
             return OFFLINE;
         }
-    }, OFFLINE(3) {
+    }, OFFLINE(1) {
         @Override
         public StatusEnum changeStatus() {
             return ONLINE;

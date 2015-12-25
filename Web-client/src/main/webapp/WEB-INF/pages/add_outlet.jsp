@@ -37,18 +37,18 @@
             <div class="row">
                 <div class="col-lg-6">
 
-                    <form role="form">
+                    <form role="form" action="/admin/outlet/add/do" method="get">
 
                         <div class="form-group">
-                            <input class="form-control" placeholder="Outlet name">
+                            <input class="form-control" placeholder="Outlet name"  name="name" >
                         </div>
 
                         <div class="form-group">
-                            <input class="form-control" placeholder="Outlet location">
+                            <input class="form-control" placeholder="Outlet location"  name="location" >
                         </div>
 
                         <div class="form-group">
-                            <input class="form-control" placeholder="Serial code" required>
+                            <input class="form-control" placeholder="Serial code" name="code" required>
                         </div>
 
                         <button type="submit" class="btn btn-default">Add outlet</button>

@@ -1,6 +1,14 @@
 package ua.nure.dehtiarov.rest.myapi.entity;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+import ua.nure.dehtiarov.rest.myapi.entity.Status;
+import ua.nure.dehtiarov.rest.myapi.entity.User;
+
 import java.io.Serializable;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by dehtiarov on 12/12/2015.
@@ -10,6 +18,8 @@ public class Outlet implements Serializable {
     private Long id;
 
     private User user;
+
+    private Status status;
 
     private String location;
 
@@ -25,6 +35,23 @@ public class Outlet implements Serializable {
         this.location = location;
         this.name = name;
         this.serialCode = serialCode;
+        Status status = new Status();
+        status.setId(1L);
+        this.status = status;
+
+    }
+
+    public Outlet(JSONObject jsonObject) {
+        try {
+            this.user = new User(jsonObject.getJSONObject("user"));
+            this.location = jsonObject.get("location").toString();
+            this.name = jsonObject.get("name").toString();
+            this.serialCode = jsonObject.get("serialCode").toString();
+            Status status = new Status(jsonObject.getJSONObject("status"));
+            this.status = status;
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     public Long getId() {
@@ -65,5 +92,24 @@ public class Outlet implements Serializable {
 
     public void setSerialCode(String serialCode) {
         this.serialCode = serialCode;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatusid(Status status) {
+        this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "Outlet{" +
+                "id=" + id +
+                ", user=" + user +
+                ", location='" + location + '\'' +
+                ", name='" + name + '\'' +
+                ", serialCode='" + serialCode + '\'' +
+                '}';
     }
 }

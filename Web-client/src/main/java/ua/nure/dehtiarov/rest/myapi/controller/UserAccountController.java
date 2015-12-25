@@ -9,7 +9,7 @@ public interface UserAccountController {
 
     boolean loginUser(User user);
 
-    boolean isUserExistByEmail(String email);
+    User getUserByUserModel(User user);
 
     boolean registerNewUser(User user);
 

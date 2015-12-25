@@ -42,7 +42,9 @@ public class Outlet implements Serializable {
         this.location = location;
         this.name = name;
         this.serialCode = serialCode;
-        this.status = new Status(StatusEnum.OFFLINE.toString());
+        Status status = new Status();
+        status.setId(1L);
+        this.status = status;
 
         ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
         executorService.schedule(() -> {
@@ -94,7 +96,7 @@ public class Outlet implements Serializable {
         return status;
     }
 
-    public void setStatusid(Status status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 

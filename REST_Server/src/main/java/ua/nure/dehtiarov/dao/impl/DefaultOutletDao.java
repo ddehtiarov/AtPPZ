@@ -8,7 +8,9 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import ua.nure.dehtiarov.dao.OutletDAO;
 import ua.nure.dehtiarov.entity.Outlet;
+import ua.nure.dehtiarov.entity.User;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.hibernate.criterion.Restrictions.eq;
@@ -28,9 +30,23 @@ public class DefaultOutletDao extends GenericDAOImpl<Outlet, Long> implements Ou
 
     @Override
     public List<Outlet> getAllOutletsByUserId(Long id) {
-        Criteria criteria = getSession().createCriteria(Outlet.class);
-        criteria.add(eq("user_id", id));
+        List<Outlet> outlets = findAll();
+        List<Outlet> resOutlets = new ArrayList<>();
 
-        return criteria.list();
+        for (Outlet outlet : outlets) {
+            if (outlet.getUser().getId().equals(id)) {
+                resOutlets.add(outlet);
+            }
+        }
+
+        return resOutlets;
+    }
+
+    @Override
+    public Outlet findOutletByCode(String code) {
+        Criteria criteria = getSession().createCriteria(Outlet.class);
+        criteria.add(eq("serialCode", code));
+
+        return (Outlet) criteria.uniqueResult();
     }
 }

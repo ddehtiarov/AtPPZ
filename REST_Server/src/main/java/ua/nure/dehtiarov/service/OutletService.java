@@ -17,6 +17,8 @@ public interface OutletService {
 
     Outlet findOutletById(Long id);
 
+    Outlet findOutletByCode(String code);
+
     List<Outlet> getAllOutletsByUserId(Long id);
 
 }

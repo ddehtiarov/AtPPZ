@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 
@@ -30,7 +31,6 @@
                     </ol>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-lg-12">
                     <h2>My devices</h2>
@@ -45,12 +45,18 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>/index.html</td>
-                                <td>1265</td>
-                                <td> <button type="submit" class="btn btn-default">Edit</button></td>
-                                <td> <button type="submit" class="btn btn-default">Remove</button></td>
-                            </tr>
+                            <c:forEach items="${devices}" var="device">
+                                <tr>
+                                    <td>${device.name}</td>
+                                    <td>${device.macaddress}</td>
+                                    <td>
+                                        <button type="submit" class="btn btn-default">Edit</button>
+                                    </td>
+                                    <td>
+                                        <button type="submit" class="btn btn-default">Remove</button>
+                                    </td>
+                                </tr>
+                            </c:forEach>
                             </tbody>
                         </table>
                     </div>

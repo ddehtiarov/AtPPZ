@@ -13,7 +13,19 @@ public class PathConstant {
     private static final String SERVER_PORT = ":8080";
     private static final String SERVER = SERVER_HOST + SERVER_PORT;
 
-    private static final String USER = SERVER + "/user/";
+    public static final String USER = SERVER + "/user/";
+
+    public static final String OUTLET = SERVER + "/outlet/";
+
+    public static final String ADDING = "add?";
+
+    public static final String OUT_CODE = "serialCode=";
+
+    public static final String OUT_NAME = "name=";
+
+    public static final String OUT_LOCATION = "location=";
+
+    public static final String OUT_USER_ID = "userId=";
 
     public static final String AUTH = USER + "auth?";
 
