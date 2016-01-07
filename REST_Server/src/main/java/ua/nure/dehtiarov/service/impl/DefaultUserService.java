@@ -1,6 +1,6 @@
 package ua.nure.dehtiarov.service.impl;
 
-import ua.nure.dehtiarov.dao.UserDAO;
+import ua.nure.dehtiarov.repository.UserDAO;
 import ua.nure.dehtiarov.entity.User;
 import ua.nure.dehtiarov.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

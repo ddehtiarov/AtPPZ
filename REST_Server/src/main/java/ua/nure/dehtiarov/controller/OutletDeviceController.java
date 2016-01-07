@@ -1,5 +1,6 @@
 package ua.nure.dehtiarov.controller;
 
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -8,6 +9,8 @@ import ua.nure.dehtiarov.entity.Device;
 import ua.nure.dehtiarov.entity.Outlet;
 import ua.nure.dehtiarov.entity.Status;
 import ua.nure.dehtiarov.entity.StatusEnum;
+import ua.nure.dehtiarov.repository.OutletDeviceDAO;
+import ua.nure.dehtiarov.repository.impl.DefaultOutletDeviceDao;
 import ua.nure.dehtiarov.service.DeviceService;
 import ua.nure.dehtiarov.service.OutletDeviceService;
 import ua.nure.dehtiarov.service.OutletService;
@@ -19,9 +22,6 @@ import ua.nure.dehtiarov.service.impl.DefaultDeviceService;
 @RestController
 @RequestMapping("/outdevactivate")
 public class OutletDeviceController {
-
-    @Autowired
-    OutletDeviceService outletDeviceService;
 
     @Autowired
     DeviceService deviceService;
@@ -50,20 +50,22 @@ public class OutletDeviceController {
         //may be should create status service for changing status of my outl
         //or find how i can solve this problem
         Outlet outlet = outletService.findOutletByCode(outCode);
-       // StatusEnum statusEnum = StatusEnum.valueOf(outlet.getStatus().getValue().toUpperCase());
 
-        System.out.println("HERE:" + outlet);
+        System.out.println("outlet:" + outlet);
+
+        try {
+            Device device = new Device("name", macaddress, outlet.getUser());
+            System.out.println(device);
+            deviceService.add(device);
+
+        } catch (Exception e) {
+            System.out.println("Error:" + e.getMessage());
+        }
+
         Status status = new Status();
-        if(outlet.getStatus().getId().equals(1l)){
+        if (outlet.getStatus().getId().equals(1l)) {
             status.setId(2L);
-            try{
-                DeviceService deviceService = new DefaultDeviceService();
-                deviceService.add(new Device("name", macaddress, outlet.getUser()));
-                System.out.println("HERE:" + macaddress);
-            }catch (Exception e){
-
-               }
-        }else{
+        } else {
             status.setId(1L);
         }
         outlet.setStatus(status);

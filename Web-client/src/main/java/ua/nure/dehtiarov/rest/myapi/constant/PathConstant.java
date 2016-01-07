@@ -17,6 +17,8 @@ public class PathConstant {
 
     public static final String OUTLET = SERVER + "/outlet/";
 
+    public static final String DEVICE = SERVER + "/device/";
+
     public static final String ADDING = "add?";
 
     public static final String OUT_CODE = "serialCode=";
@@ -26,6 +28,8 @@ public class PathConstant {
     public static final String OUT_LOCATION = "location=";
 
     public static final String OUT_USER_ID = "userId=";
+
+    public static final String DEV_USER_ID = "userId=";
 
     public static final String AUTH = USER + "auth?";
 

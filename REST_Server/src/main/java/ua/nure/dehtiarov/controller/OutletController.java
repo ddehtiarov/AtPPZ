@@ -24,9 +24,6 @@ public class OutletController {
     OutletService outletService;
 
     @Autowired
-    OutletDeviceService outletDeviceService;
-
-    @Autowired
     UserService userService;
 
     @RequestMapping("/add")

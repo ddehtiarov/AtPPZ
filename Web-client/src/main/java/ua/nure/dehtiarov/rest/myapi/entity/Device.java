@@ -1,5 +1,8 @@
 package ua.nure.dehtiarov.rest.myapi.entity;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.concurrent.Executors;
@@ -26,6 +29,17 @@ public class Device implements Serializable {
 
     public Device(String name) {
         this.name = name;
+    }
+
+    public Device(JSONObject jsonObject) {
+        try {
+            this.user = new User(jsonObject.getJSONObject("user"));
+            this.name = jsonObject.get("name").toString();
+            this.macaddress = jsonObject.get("macaddress").toString();
+            this.lastActivityTime = new Timestamp(Long.valueOf(jsonObject.get("lastActivityTime").toString()));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     public long getId() {

@@ -2,7 +2,7 @@ package ua.nure.dehtiarov.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ua.nure.dehtiarov.dao.OutletDAO;
+import ua.nure.dehtiarov.repository.OutletDAO;
 import ua.nure.dehtiarov.entity.Outlet;
 import ua.nure.dehtiarov.service.OutletService;
 

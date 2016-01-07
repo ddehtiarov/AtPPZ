@@ -2,7 +2,7 @@ package ua.nure.dehtiarov.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ua.nure.dehtiarov.dao.DeviceDAO;
+import ua.nure.dehtiarov.repository.DeviceDAO;
 import ua.nure.dehtiarov.entity.Device;
 import ua.nure.dehtiarov.service.DeviceService;
 
@@ -17,7 +17,7 @@ import java.util.List;
 public class DefaultDeviceService implements DeviceService {
 
     @Autowired
-    private DeviceDAO deviceDAO;
+    DeviceDAO deviceDAO;
 
     @Override
     public void add(Device device) {

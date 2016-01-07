@@ -2,8 +2,7 @@ package ua.nure.dehtiarov.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ua.nure.dehtiarov.dao.StatisticDAO;
-import ua.nure.dehtiarov.entity.Outlet;
+import ua.nure.dehtiarov.repository.StatisticDAO;
 import ua.nure.dehtiarov.entity.Statistic;
 import ua.nure.dehtiarov.service.StatisticService;
 

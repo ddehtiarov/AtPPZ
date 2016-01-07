@@ -2,8 +2,8 @@ package ua.nure.dehtiarov.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ua.nure.dehtiarov.dao.OutletDeviceDAO;
 import ua.nure.dehtiarov.entity.OutletDevice;
+import ua.nure.dehtiarov.repository.OutletDeviceDAO;
 import ua.nure.dehtiarov.service.OutletDeviceService;
 
 import javax.transaction.Transactional;
@@ -12,9 +12,7 @@ import java.util.List;
 /**
  * Created by dehtiarov on 12/19/2015.
  */
-@Service
-@Transactional
-public class DefaultOutletDeviceService implements OutletDeviceService {
+public class DefaultOutletDeviceService implements OutletDeviceService{
 
     @Autowired
     OutletDeviceDAO outletDeviceDAO;

@@ -31,7 +31,7 @@
 
     <div class="inner-bg">
         <div class="container">
-            <div class="row">
+            <div class="row hidden-sm hidden-xs">
                 <div class="col-sm-8 col-sm-offset-2 text">
                     <h1><strong>SFO</strong> Login</h1>
                     <div class="description">

@@ -21,7 +21,7 @@ public class DefaultDeviceController implements DeviceController {
 
     @Override
     public List<Device> getAllUsersDevices(User user) {
-        String query = PathConstant.OUTLET + "getAll?" + PathConstant.OUT_USER_ID +
+        String query = PathConstant.DEVICE + "getAll?" + PathConstant.DEV_USER_ID +
                 +user.getId();
         LOGGER.info("query: " + query);
         System.out.println("query: " + query);

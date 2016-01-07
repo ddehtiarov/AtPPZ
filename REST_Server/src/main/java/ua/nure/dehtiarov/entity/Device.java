@@ -3,6 +3,7 @@ package ua.nure.dehtiarov.entity;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.UUID;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -50,6 +51,7 @@ public class Device implements Serializable {
         this.name = name;
         this.macaddress = mac;
         this.user = user;
+        this.lastActivityTime = new Timestamp((new Date()).getTime());
 
         ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
         executorService.schedule(() -> {
