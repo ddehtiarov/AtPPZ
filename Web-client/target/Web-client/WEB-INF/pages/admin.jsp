@@ -69,7 +69,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-12">
+            <div class="col-lg-12 hidden-sm hidden-xs">
                 <h2>Bordered with Striped Rows</h2>
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover table-striped">

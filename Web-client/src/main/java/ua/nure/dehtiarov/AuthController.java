@@ -51,4 +51,16 @@ public class AuthController {
         model.addAttribute("user", new User());
         return "login";
     }
+
+    @RequestMapping("/andr")
+    public String loginAccountFromAndroid(ModelMap model, HttpSession httpSession,
+                                          @RequestParam(value = "email") String email) {
+        User user = new User();
+        user.setEmail(email);
+        UserAccountController userAccountController = restServer.getUserController();
+
+        httpSession.setAttribute("user", userAccountController.getUserByUserModel(user));
+
+        return "admin";
+    }
 }

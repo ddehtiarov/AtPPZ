@@ -30,7 +30,7 @@ public class RegistrationController {
         user.setName(name);
         model.addAttribute("user", user);
         if (userAccountController.registerNewUser(user)) {
-            return "redirect:/admin/";
+            return "redirect:/login/";
         }
         model.addAttribute("error", "Sorry, user with this email/pass is already exist");
         return "register";

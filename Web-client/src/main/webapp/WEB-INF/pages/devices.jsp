@@ -40,8 +40,8 @@
                             <tr>
                                 <th>Name</th>
                                 <th>MAC address</th>
-                                <th>Edit</th>
-                                <th>Remove</th>
+                                <th class="hidden-sm hidden-xs" >Edit</th>
+                                <th class="hidden-sm hidden-xs">Remove</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -49,10 +49,10 @@
                                 <tr>
                                     <td>${device.name}</td>
                                     <td>${device.macaddress}</td>
-                                    <td>
+                                    <td class="hidden-sm hidden-xs">
                                         <button type="submit" class="btn btn-default">Edit</button>
                                     </td>
-                                    <td>
+                                    <td class="hidden-sm hidden-xs">
                                         <button type="submit" class="btn btn-default">Remove</button>
                                     </td>
                                 </tr>
