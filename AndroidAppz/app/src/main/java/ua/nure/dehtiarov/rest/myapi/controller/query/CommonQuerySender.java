@@ -22,6 +22,7 @@ public class CommonQuerySender extends QuerySender {
             HttpGet get = new HttpGet(url);
 
             String response = httpClient.execute(get, res);
+            Thread.sleep(100);
 
             result = response;
 

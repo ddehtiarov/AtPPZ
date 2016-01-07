@@ -34,9 +34,6 @@ public class AuthController {
         user.setPassword(password);
 
         if (userAccountController.loginUser(user)) {
-
-            //mav.addObject("user", user);
-            //model.addAttribute("user", userAccountController.getUserByUserModel(user));
             httpSession.setAttribute("user", userAccountController.getUserByUserModel(user));
             return "admin";
         }

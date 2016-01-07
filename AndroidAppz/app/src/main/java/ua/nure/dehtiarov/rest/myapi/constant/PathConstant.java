@@ -5,11 +5,11 @@ package ua.nure.dehtiarov.rest.myapi.constant;
  */
 public class PathConstant {
 
-    private static final String IP = "http://159.224.66.191";
+    public static final String IP = "http://192.168.0.102";
 
     private static final String LH = "http://localhost";
 
-    private static final String SERVER_HOST = LH;
+    private static final String SERVER_HOST = IP;
     private static final String SERVER_PORT = ":8080";
     private static final String SERVER = SERVER_HOST + SERVER_PORT;
 

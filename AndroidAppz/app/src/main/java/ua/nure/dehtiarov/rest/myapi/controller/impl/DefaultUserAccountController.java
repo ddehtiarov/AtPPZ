@@ -27,7 +27,7 @@ public class DefaultUserAccountController implements UserAccountController {
 
         System.out.println("result " + result);
 
-        return result;
+        return true;
     }
 
     @Override

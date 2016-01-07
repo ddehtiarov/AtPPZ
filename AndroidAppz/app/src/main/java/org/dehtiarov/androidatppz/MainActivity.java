@@ -6,23 +6,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import ua.nure.dehtiarov.rest.myapi.constant.PathConstant;
+
 public class MainActivity extends AppCompatActivity {
 
     private WebView webView;
 
-    private static final String IP = "192.168.0.102";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
 
         Intent intent = getIntent();
         webView = (WebView) findViewById(R.id.webView);
         webView.setWebViewClient(new MyWebViewClient());
         webView.getSettings().setJavaScriptEnabled(true);
-        webView.loadUrl("http://" + IP + ":8090/login/andr?email=" + intent.getStringExtra("email"));
+        webView.loadUrl(PathConstant.IP + ":8090/login/andr?email=" + intent.getStringExtra("email"));
     }
     @Override
     public void onBackPressed() {

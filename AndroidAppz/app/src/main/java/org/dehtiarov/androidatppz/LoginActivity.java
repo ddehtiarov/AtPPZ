@@ -3,22 +3,20 @@ package org.dehtiarov.androidatppz;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.app.LoaderManager.LoaderCallbacks;
-
 import android.content.CursorLoader;
+import android.content.Intent;
 import android.content.Loader;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
-
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
@@ -32,6 +30,11 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import ua.nure.dehtiarov.rest.myapi.RestServer;
+import ua.nure.dehtiarov.rest.myapi.controller.UserAccountController;
+import ua.nure.dehtiarov.rest.myapi.entity.User;
+import ua.nure.dehtiarov.rest.myapi.impl.DefaultRestServer;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -297,6 +300,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      */
     public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
 
+        private final RestServer restServer = new DefaultRestServer();
         private final String mEmail;
         private final String mPassword;
 
@@ -307,10 +311,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         @Override
         protected Boolean doInBackground(Void... params) {
-            // TODO: attempt authentication against a network service.
 
             try {
-                // Simulate network access.
                 Thread.sleep(2000);
             } catch (InterruptedException e) {
                 return false;
@@ -319,12 +321,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             for (String credential : DUMMY_CREDENTIALS) {
                 String[] pieces = credential.split(":");
                 if (pieces[0].equals(mEmail)) {
-                    // Account exists, return true if the password matches.
                     return pieces[1].equals(mPassword);
                 }
             }
-
-            // TODO: register the new account here.
             return true;
         }
 
@@ -333,8 +332,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mAuthTask = null;
             showProgress(false);
 
-            if (success) {
-                Intent intent = new Intent(LoginActivity.this , MainActivity.class);
+            UserAccountController userAccountController = restServer.getUserController();
+            User user = new User();
+            user.setEmail(mEmail);
+            user.setPassword(mPassword);
+
+            if (success && userAccountController.loginUser(user)) {
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 intent.putExtra("email", mEmail);
                 startActivity(intent);
             } else {
